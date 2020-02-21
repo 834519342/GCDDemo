@@ -28,7 +28,7 @@
 
 @interface ViewController ()
 {
-    dispatch_semaphore_t semaphoreLock;
+    dispatch_semaphore_t semaphoreLock; // 信号量
 }
 
 @property (nonatomic, assign) int ticketSurplusCount;
@@ -483,11 +483,11 @@
 }
 
 /*
- * GCD信息量：dispatch_semaphore
- * 当计数器为0时，当前线程为等待状态，当计数器大于0时，当前线程继续执行
- * dispatch_semaphore_create：创建一个semaphore并初始化信号的总量
- * dispatch_semaphore_signal：发送一个信号，让信号总量+1
- * dispatch_semaphore_wait：让信号总量-1，当信号总量为0时就会一直等待(阻塞当前线程)，否则就可以正常执行
+ GCD信息量：dispatch_semaphore
+ 当计数器为0时，当前线程为等待状态，当计数器 > 0时，当前线程继续执行
+ dispatch_semaphore_create：创建一个semaphore并初始化信号的总量
+ dispatch_semaphore_signal：发送一个信号，让信号总量+1
+ dispatch_semaphore_wait：让信号总量-1，当信号总量为0时就会一直等待(阻塞当前线程)，否则就可以正常执行
  */
 - (void)semaphoreSync
 {
